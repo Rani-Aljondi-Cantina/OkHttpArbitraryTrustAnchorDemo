@@ -14,9 +14,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
+import java.security.KeyManagementException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.UnrecoverableKeyException;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.CertificateFactory;
@@ -66,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
     String wssAddress = "139.68.198.155:8082";
 
 
-    OkHttpClient rejectingClient = new OkHttpClient.Builder().certificatePinner(certificatePinner1).build();
 
 
     Request request = new Request.Builder()
@@ -95,13 +97,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        button_bad_keyset = (Button) findViewById(R.id.button_bad_keyset);
-        button_bad_keyset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new RivieraConnectTask(rejectingClient).execute();
-            }
-        });
     }
 
     private class RivieraConnectTask extends AsyncTask<Void, Void, Boolean> {
