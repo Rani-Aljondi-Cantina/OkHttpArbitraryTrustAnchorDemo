@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">OkHttpArbitraryTrustAnchorDemo</string>
+    <string name="keyset_that_validates_certificate">Keyset that validates certificate</string>
+    <string name="keyset_that_rejects_certificate">Keyset that rejects certificate</string>
+</resources>
